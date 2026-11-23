@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Compilador del lenguaje Breve: tokens, árbol sintáctico, tabla de símbolos, código de tres direcciones, tripletas, cuádruplas y ejecución." />
+    <title>Compilador Breve</title>
+    <script>
+      ;(() => {
+        let saved = {}
+        try {
+          saved = JSON.parse(localStorage.getItem('compilador-estado') || '{}').state || {}
+        } catch {}
+        const pref = saved.theme || 'system'
+        const light = pref === 'light' || (pref === 'system' && matchMedia('(prefers-color-scheme: light)').matches)
+        document.documentElement.className = light ? 'light' : 'dark'
+        if (saved.lang === 'en') {
+          document.documentElement.lang = 'en'
+          document.title = 'Breve Compiler'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
